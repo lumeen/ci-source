@@ -3,7 +3,7 @@ platform: linux
 
 image_resource:
   type: docker-image
-  source: {repository: python, tag: latest}
+  source: {repository:  broadinstitute/python-requests, tag: latest}
 inputs:
 - name: ci-source 
 run:
