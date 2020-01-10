@@ -20,8 +20,8 @@ response = requests.post(url, data={
    'autoStart' :'true',
    'appInfoJson':'{    "domain": "helloo",    "muleVersion": {        "version": "4.2.2"    },    "region": "us-east-1",    "monitoringEnabled": true,    "monitoringAutoRestart": true,    "workers": {        "amount": 1,        "type": {            "name": "Medium",            "weight": 0.2,            "cpu": "0.2 vCore",            "memory": "500 MB memory"        }    },    "loggingNgEnabled": true,    "persistentQueues": false,    "objectStoreV1": false}'
    }, files=files, headers=headers)
-e = json.loads(response)
-print(e)
+
+print(response)
 print(response.status_code)
 print(response.reason)
 print(response.encoding)
