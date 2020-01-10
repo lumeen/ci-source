@@ -11,4 +11,4 @@ echo "Using MAVEN_OPTS: ${MAVEN_OPTS}"
 mvn clean package ${MAVEN_ARGS}
 
 cd ..
-cp project-source/target/*.zip maven-output/
+cp project-source/target/*.jar maven-output/
