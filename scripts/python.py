@@ -12,6 +12,6 @@ print (2)
 print(x.text)
 print (3)
 
-print(r)
+print(r.json())
 print (4)
 
