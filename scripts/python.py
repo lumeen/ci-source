@@ -21,6 +21,6 @@ response = requests.post(url, data={
    }, files=files)
 
 
-pprint(response.json())
+print(response.json())
 print(x.json())
 
