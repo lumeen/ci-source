@@ -22,7 +22,7 @@ response = requests.post(url, data={
    }, files=files, headers=headers)
 
 print(response.status_code)
-print(response.message)
+print(response.reason)
 
 
 
