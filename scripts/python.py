@@ -5,7 +5,8 @@ url = 'https://anypoint.mulesoft.com/accounts/login'
 myobj = {'username': os.environ['muleUsername'], 'password':os.environ['mulePassword']}
 x = requests.post(url, data = myobj)
 
-token = x.toJson().['access_token']
+token = x.json()['access_token']
+pprint(token)
 
 
 url = 'https://anypoint.mulesoft.com/accounts/login'
