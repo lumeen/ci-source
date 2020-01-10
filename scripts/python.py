@@ -14,7 +14,7 @@ url = 'https://anypoint.mulesoft.com/accounts/login'
 
 headers = {'Authorization': token, 'X-ANYPNT-ENV-ID': '2b38afe9-1e88-411e-82d7-b9376cfab625'}
 
-files = {'file': ('report.csv', 'data to send')}
+files = {'file': ('built-artifact/hello-1.0.0-SNAPSHOT-mule-application.jar', 'data to send')}
 
 response = requests.post(url, data={
    'autoStart' :'true',
