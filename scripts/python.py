@@ -10,7 +10,7 @@ token = 'Bearer ' + x.json()['access_token']
 print(token)
 
 
-url = 'https://anypoint.mulesoft.com/accounts/login'
+url = 'https://anypoint.mulesoft.com/cloudhub/api/v2/applications/'
 
 headers = {'Authorization': token, 'X-ANYPNT-ENV-ID': '2b38afe9-1e88-411e-82d7-b9376cfab625',  'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'}
 files = {'file': ('maven-output/hello-1.0.0-SNAPSHOT-mule-application.jar', 'data to send')}
