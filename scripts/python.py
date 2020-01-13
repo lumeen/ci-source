@@ -15,7 +15,7 @@ url = 'https://anypoint.mulesoft.com/accounts/login'
 headers = {'Authorization': token, 'X-ANYPNT-ENV-ID': '2b38afe9-1e88-411e-82d7-b9376cfab625',  'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'}
 f = open("built-artifact/hello-1.0.0-SNAPSHOT-mule-application.jar", "r")
 files = {'file': ('built-artifact/hello-1.0.0-SNAPSHOT-mule-application.jar', 'data to send')}
-
+ww = os.listdir(os.curdir)
 response = requests.post(url, data={
    'autoStart' :'true',
    'appInfoJson':'{    "domain": "helloo",    "muleVersion": {        "version": "4.2.2"    },    "region": "us-east-1",    "monitoringEnabled": true,    "monitoringAutoRestart": true,    "workers": {        "amount": 1,        "type": {            "name": "Medium",            "weight": 0.2,            "cpu": "0.2 vCore",            "memory": "500 MB memory"        }    },    "loggingNgEnabled": true,    "persistentQueues": false,    "objectStoreV1": false}'
