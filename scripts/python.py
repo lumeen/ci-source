@@ -16,30 +16,21 @@ applicationResposne = requests.get(applicationUrl, headers = headers)
 applications = applicationResposne.json()['data']
 applicationProperties = next((x for x in applications if x['name'] == 'aaaaaaa'), None)
 applicationId =  applicationProperties['id'] if applicationProperties != None else None
-
-print(applicationId)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 files = {'file': open('maven-output/hello-1.0.0-SNAPSHOT-mule-application.jar','rb')}
-response = requests.post(applicationUrl, data={
+
+
+if applicationId != None: 
+   
+   response = requests.post(applicationUrl, data={
    'targetId' :'2298399',
    'artifactName' :'aaaaaaa'},   
-  files=files, headers=headers)
+      files=files, headers=headers)
  
-responseStatus = response.json()['message']		
-print(responseStatus) 
+   responseStatus = response.json()['message']		
+   print(responseStatus) 
 if response.status_code != 202:
    raise Exception('Error during deploment: ' + responseStatus)
+   
+else:
+   println('aaaa')
+   
