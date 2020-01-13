@@ -12,7 +12,7 @@ print(token)
 
 url = 'https://anypoint.mulesoft.com/cloudhub/api/v2/applications/'
 
-headers = {'Content-Type': 'multipart/form-data; boundary=--------------------------461086193928633743539511','Authorization': token, 'X-ANYPNT-ENV-ID': '2b38afe9-1e88-411e-82d7-b9376cfab625',  'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'}
+headers = {'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW','Authorization': token, 'X-ANYPNT-ENV-ID': '2b38afe9-1e88-411e-82d7-b9376cfab625'}
 files = {'file': ('maven-output/hello-1.0.0-SNAPSHOT-mule-application.jar', 'data to send')}
 cwd = os.getcwd()
 print(cwd)
