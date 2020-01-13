@@ -5,7 +5,8 @@ image_resource:
   type: docker-image
   source: {repository:  broadinstitute/python-requests, tag: latest}
 inputs:
-- name: ci-source 
+- name: ci-source
+- name: maven-outputs
 run:
   path: python 
   args:
