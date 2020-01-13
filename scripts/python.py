@@ -17,7 +17,6 @@ files = {'file': ('built-artifact/hello-1.0.0-SNAPSHOT-mule-application.jar', 'd
 cwd = os.getcwd()
 print(cwd)
 for entry in os.scandir('.'):
-    if entry.is_file():
         print(entry.name)
 response = requests.post(url, data={
    'autoStart' :'true',
