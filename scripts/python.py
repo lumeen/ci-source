@@ -19,7 +19,7 @@ response = requests.post(deploy, data={
    'artifactName' :'aaaaaaa'},   
   files=files, headers=headers)
 
-if response.status_code != "202"
+if response.status_code != 202
 raise Exception('x should not exceed 5. The value of x)
 
 
