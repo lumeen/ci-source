@@ -18,11 +18,7 @@ response = requests.post(url, data={
    'targetId' :'2298348',
    'artifactName' :'testowa'},   
   files=files, headers=headers)
+
+
 print(response.json())
-print(response)
-print(response.status_code)
-print(response.reason)
-print(response.encoding)
-
-
 
