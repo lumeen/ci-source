@@ -13,7 +13,7 @@ headers = {'Authorization': token, 'X-ANYPNT-ENV-ID': '2b38afe9-1e88-411e-82d7-b
 
 applicationResposne = requests.get(applicationUrl, headers = headers)
 
-print(applicationResposne.json())
+print(applicationResposne.json()['data'])
 
 
 
