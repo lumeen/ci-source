@@ -20,6 +20,7 @@ response = requests.post(deploy, data={
   files=files, headers=headers)
  
 responseStatus = response.json()		
+print(responseStatus) 
 if response.status_code != 202:
    raise Exception('Error during deploment: ' + responseStatus)
 
