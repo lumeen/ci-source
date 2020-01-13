@@ -6,7 +6,7 @@ image_resource:
   source: {repository:  broadinstitute/python-requests, tag: latest}
 inputs:
 - name: ci-source
-- name: maven-outputs
+- name: maven-output
 run:
   path: python 
   args:
