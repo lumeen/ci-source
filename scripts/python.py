@@ -20,7 +20,7 @@ response = requests.post(deploy, data={
   files=files, headers=headers)
 
 if response.status_code != 202:
-raise Exception('x should not exceed 5. The value of x)
+   raise Exception('x should not exceed 5. The value of x)
 
 
 
