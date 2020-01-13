@@ -14,7 +14,7 @@ headers = {'Authorization': token, 'X-ANYPNT-ENV-ID': '2b38afe9-1e88-411e-82d7-b
 applicationResposne = requests.get(applicationUrl, headers = headers)
 
 applications = applicationResposne.json()['data']
-applicationId = next((x for x in applications if x.artifact.name == 'aaaaaaa'), None)
+applicationId = next((x for x in applications if x['name'] == 'aaaaaaa'), None)
 print(applicationId)
 
 
