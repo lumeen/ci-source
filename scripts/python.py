@@ -17,7 +17,7 @@ response = requests.post(deploy, data={
    'artifactName' :'aaaaaaa'},   
   files=files, headers=headers)
  
-responseStatus = response.json()		
+responseStatus = response.json()['message']		
 print(responseStatus) 
 if response.status_code != 202:
    raise Exception('Error during deploment: ' + responseStatus)
