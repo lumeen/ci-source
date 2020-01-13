@@ -21,4 +21,8 @@ response = requests.post(url, data={
 
 
 print(response.json())
+print(response)
+print(response.status_code)
+print(response.reason)
+print(response.encoding)
 
