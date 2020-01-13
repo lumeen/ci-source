@@ -13,10 +13,10 @@ print(token)
 url = 'https://anypoint.mulesoft.com/accounts/login'
 
 headers = {'Authorization': token, 'X-ANYPNT-ENV-ID': '2b38afe9-1e88-411e-82d7-b9376cfab625',  'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'}
-files = {'file': ('built-artifact/hello-1.0.0-SNAPSHOT-mule-application.jar', 'data to send')}
+files = {'file': ('maven-output/hello-1.0.0-SNAPSHOT-mule-application.jar', 'data to send')}
 cwd = os.getcwd()
 print(cwd)
-for entry in os.scandir('.'):
+for entry in os.scandir('maven-output'):
         print(entry.name)
 response = requests.post(url, data={
    'autoStart' :'true',
