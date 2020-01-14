@@ -6,6 +6,12 @@ def getAuthorizationToken():
   loginResponse = requests.post(loginUrl, data = loginObject)
   return 'Bearer ' + loginResponse.json()['access_token']
 
+def getApplicationId():
+  getApplicationsResposne = requests.get(applicationUrl, headers = headers)
+  applications = getApplicationsResposne.json()['data']
+  applicationProperties = next((x for x in applications if x['name'] == appName), None)
+  return applicationProperties['id'] if applicationProperties != None else None
+
 
 loginUrl = 'https://anypoint.mulesoft.com/accounts/login'
 applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1//applications'
@@ -17,15 +23,9 @@ targetId = os.environ['targetId']
 
 loginObject = {'username': os.environ['muleUsername'], 'password':os.environ['mulePassword']}
 headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, 'X-ANYPNT-ORG-ID': orgId}
-
-
-
-applicationResposne = requests.get(applicationUrl, headers = headers)
-
-applications = applicationResposne.json()['data']
-applicationProperties = next((x for x in applications if x['name'] == appName), None)
-applicationId =  applicationProperties['id'] if applicationProperties != None else None
 files = {'file': open('maven-output/' + appName +'-1.0.0-SNAPSHOT-mule-application.jar','rb')}
+
+applicationId = getApplicationId
 
 
 if applicationId == None: 
@@ -42,4 +42,3 @@ else:
    print(response.status_code)
    if response.status_code != 200:
       raise Exception('Error during deploment: ' + response.json()['message']	)
-
