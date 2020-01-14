@@ -34,3 +34,4 @@ else:
       files=files, headers=headers)
  
    responseStatus = response.json()['message']
+   print(responseStatus)
