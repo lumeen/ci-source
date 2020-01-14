@@ -34,5 +34,5 @@ else:
    response = requests.patch(applicationUrl + "/" + str(applicationId),
       files=files, headers=headers)
    print(response.status_code)
-   if response.status_code != 202:
+   if response.status_code != 200:
       raise Exception('Error during deploment: ' + response.reason)
