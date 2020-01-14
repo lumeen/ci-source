@@ -12,6 +12,12 @@ def getApplicationId():
   applicationProperties = next((x for x in applications if x['name'] == appName), None)
   return applicationProperties['id'] if applicationProperties != None else None
 
+def validateResponseCode(response, responseCode):   
+  if this.response.status_code != responseCode:
+   raise Exception('Error during deploment: ' + response.json()['message']	)
+
+
+
 
 loginUrl = 'https://anypoint.mulesoft.com/accounts/login'
 applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1//applications'
@@ -29,16 +35,16 @@ applicationId = getApplicationId()
 print(applicationId)
 
 if applicationId == None: 
+   
    response = requests.post(applicationUrl, data={
    'targetId' :targetId,
    'artifactName' :appName},   
       files=files, headers=headers)
  
-   if response.status_code != 202:
-      raise Exception('Error during deploment: ' + response.json()['message']	)
+   validateResponseCode(response, 202)
 else:
+  
    response = requests.patch(applicationUrl + "/" + str(applicationId),
       files=files, headers=headers)
-   print(response.status_code)
-   if response.status_code != 200:
-      raise Exception('Error during deploment: ' + response.json()['message']	)
+   
+   validateResponseCode(response, 200)
