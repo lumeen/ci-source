@@ -12,9 +12,9 @@ def getApplicationId():
   applicationProperties = next((x for x in applications if x['name'] == appName), None)
   return applicationProperties['id'] if applicationProperties != None else None
 
-def validateResponseCode(response, responseCode):   
-  if this.response.status_code != responseCode:
-   raise Exception('Error during deploment: ' + response.json()['message']	)
+def validateResponseCode(apiResponse, responseCode):   
+  if apiResponse.status_code != responseCode:
+   raise Exception('Error during deploment: ' + apiResponse.json()['message']	)
 
 
 
