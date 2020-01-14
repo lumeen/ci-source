@@ -29,22 +29,21 @@ targetId = os.environ['targetId']
 
 loginObject = {'username': os.environ['muleUsername'], 'password':os.environ['mulePassword']}
 headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, 'X-ANYPNT-ORG-ID': orgId}
-files = {'file': open('maven-output/' + appName +'-1.0.0-SNAPSHOT-mule-application.jar','rb')}
+applicationJar = {'file': open('maven-output/' + appName +'-1.0.0-SNAPSHOT-mule-application.jar','rb')}
 
 applicationId = getApplicationId()
-print(applicationId)
 
 if applicationId == None: 
    
    response = requests.post(applicationUrl, data={
    'targetId' :targetId,
    'artifactName' :appName},   
-      files=files, headers=headers)
+      files=applicationJar, headers=headers)
  
    validateResponseCode(response, 202)
 else:
   
    response = requests.patch(applicationUrl + "/ds" + str(applicationId),
-      files=files, headers=headers)
+      files=applicationJar, headers=headers)
    
    validateResponseCode(response, 200)
