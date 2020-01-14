@@ -25,7 +25,7 @@ loginObject = {'username': os.environ['muleUsername'], 'password':os.environ['mu
 headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, 'X-ANYPNT-ORG-ID': orgId}
 files = {'file': open('maven-output/' + appName +'-1.0.0-SNAPSHOT-mule-application.jar','rb')}
 
-applicationId = getApplicationId
+applicationId = getApplicationId()
 print(applicationId)
 
 if applicationId == None: 
