@@ -4,12 +4,9 @@ import json
 
 loginUrl = 'https://anypoint.mulesoft.com/accounts/login'
 applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1//applications'
-
-
 loginObject = {'username': os.environ['muleUsername'], 'password':os.environ['mulePassword']}
-loginResponse = requests.post(loginUrl, data = loginObject)
-token = 'Bearer ' + loginResponse.json()['access_token']
-headers = {'Authorization': token, 'X-ANYPNT-ENV-ID': '2b38afe9-1e88-411e-82d7-b9376cfab625', 'X-ANYPNT-ORG-ID':'88063e25-29df-47cc-b930-c4c75ee17938'}
+headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': '2b38afe9-1e88-411e-82d7-b9376cfab625', 'X-ANYPNT-ORG-ID':'88063e25-29df-47cc-b930-c4c75ee17938'}
+
 
 applicationResposne = requests.get(applicationUrl, headers = headers)
 
@@ -36,3 +33,8 @@ else:
    print(response.status_code)
    if response.status_code != 200:
       raise Exception('Error during deploment: ' + response.reason)
+
+
+def getAuthorizationToken():
+  loginResponse = requests.post(loginUrl, data = loginObject)
+  return 'Bearer ' + loginResponse.json()['access_token']
