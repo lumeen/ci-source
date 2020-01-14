@@ -35,11 +35,11 @@ if applicationId == None:
       files=files, headers=headers)
  
    if response.status_code != 202:
-      raise Exception('Error during deploment: ' + response.content)
+      raise Exception('Error during deploment: ' + response.json())
 else:
    response = requests.patch(applicationUrl + "/" + str(applicationId),
       files=files, headers=headers)
    print(response.status_code)
    if response.status_code != 200:
-      raise Exception('Error during deploment: ' + response.content)
+      raise Exception('Error during deploment: ' + response.json())
 
