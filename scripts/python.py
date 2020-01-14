@@ -30,7 +30,7 @@ if applicationId == None:
    responseStatus = response.json()['message']
 else:
    print("wchodze3")
-   response = requests.post(applicationUrl + "/" + str(applicationId),
+   response = requests.patch(applicationUrl + "/" + str(applicationId),
       files=files, headers=headers)
  
    responseStatus = response.json()['message']
