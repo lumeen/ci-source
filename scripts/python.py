@@ -23,7 +23,7 @@ headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, '
 applicationResposne = requests.get(applicationUrl, headers = headers)
 
 applications = applicationResposne.json()['data']
-applicationProperties = next((x for x in applications if x['name'] == 'aaaaaaa'), None)
+applicationProperties = next((x for x in applications if x['name'] == appName), None)
 applicationId =  applicationProperties['id'] if applicationProperties != None else None
 files = {'file': open('maven-output/' + appName +'-1.0.0-SNAPSHOT-mule-application.jar','rb')}
 
