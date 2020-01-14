@@ -10,4 +10,4 @@ inputs:
 run:
   path: python 
   args:
-  - ci-source/scripts/python.py
+  - ci-source/scripts/deploy.py
