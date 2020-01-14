@@ -2,6 +2,11 @@ import requests
 import os
 import json
 
+def getAuthorizationToken():
+  loginResponse = requests.post(loginUrl, data = loginObject)
+  return 'Bearer ' + loginResponse.json()['access_token']
+
+
 loginUrl = 'https://anypoint.mulesoft.com/accounts/login'
 applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1//applications'
 
@@ -13,11 +18,6 @@ targetId = os.environ['targetId']
 loginObject = {'username': os.environ['muleUsername'], 'password':os.environ['mulePassword']}
 headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, 'X-ANYPNT-ORG-ID': orgId}
 
-
-
-def getAuthorizationToken():
-  loginResponse = requests.post(loginUrl, data = loginObject)
-  return 'Bearer ' + loginResponse.json()['access_token']
 
 
 applicationResposne = requests.get(applicationUrl, headers = headers)
