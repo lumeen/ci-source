@@ -17,7 +17,7 @@ def validateResponseCode(apiResponse, responseCode):
    raise Exception('Error during deploment: ' + apiResponse.json()['message']	)
 
 loginUrl = 'https://anypoint.mulesoft.com/accounts/login'
-applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1//applications'
+applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1/applications'
 
 envId = os.environ['envId']
 orgId = os.environ['orgId']
