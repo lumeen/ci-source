@@ -29,6 +29,7 @@ if applicationId == None:
  
    responseStatus = response.json()['message']
 else:
+   print("wchodze")
    response = requests.post(applicationUrl + "/" + str(applicationId),
       files=files, headers=headers)
  
