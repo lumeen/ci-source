@@ -17,7 +17,6 @@ applications = applicationResposne.json()['data']
 applicationProperties = next((x for x in applications if x['name'] == 'aaaaaaa'), None)
 applicationId =  applicationProperties['id'] if applicationProperties != None else None
 files = {'file': open('maven-output/hello-1.0.0-SNAPSHOT-mule-application.jar','rb')}
- print(applicationId) 
 
 if applicationId == None: 
    
