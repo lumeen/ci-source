@@ -29,7 +29,7 @@ if applicationId == None:
  
    responseStatus = response.json()['message']
 else:
-   response = requests.post(applicationUrl + "/" + applicationId,
+   response = requests.post(applicationUrl + "/" + str(applicationId),
       files=files, headers=headers)
  
    responseStatus = response.json()['message']
