@@ -33,6 +33,6 @@ else:
    print("wchodze3")
    response = requests.patch(applicationUrl + "/" + str(applicationId),
       files=files, headers=headers)
- 
+   print(response.status_code)
    if response.status_code != 202:
       raise Exception('Error during deploment: ' + response.reason)
