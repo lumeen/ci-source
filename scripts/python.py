@@ -18,10 +18,10 @@ applicationProperties = next((x for x in applications if x['name'] == 'aaaaaaa')
 applicationId =  applicationProperties['id'] if applicationProperties != None else None
 files = {'file': open('maven-output/hello-1.0.0-SNAPSHOT-mule-application.jar','rb')}
 
-   print("wchodze1")
+print("wchodze1")
 
 if applicationId == None: 
-      print("wchodze2")
+   print("wchodze2")
    response = requests.post(applicationUrl, data={
    'targetId' :'2298399',
    'artifactName' :'aaaaaaa'},   
