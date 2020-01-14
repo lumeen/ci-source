@@ -3,7 +3,7 @@ import os
 import json
 
 def getAuthorizationToken():
-  loginResponse = requests.post(loginUrl, data = loginObject)
+  loginResponse = requests.post(loginUrl, data = {'username': os.environ['muleUsername'], 'password':os.environ['mulePassword']})
   return 'Bearer ' + loginResponse.json()['access_token']
 
 def getApplicationId():
@@ -25,7 +25,6 @@ appName = os.environ['applicationName']
 appVersion= os.environ['applicationVersion']
 targetId = os.environ['targetId']
 
-loginObject = {'username': os.environ['muleUsername'], 'password':os.environ['mulePassword']}
 headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, 'X-ANYPNT-ORG-ID': orgId}
 applicationJar = {'file': open('maven-output/' + appName +'-' + appVersion + '-mule-application.jar','rb')}
 applicationId = getApplicationId()
