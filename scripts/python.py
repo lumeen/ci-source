@@ -33,5 +33,5 @@ else:
    response = requests.patch(applicationUrl + "/" + str(applicationId),
       files=files, headers=headers)
  
-   responseStatus = response.json()
+   responseStatus = response.json()['message']
    print(responseStatus)
