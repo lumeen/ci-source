@@ -4,7 +4,7 @@ import json
 
 def getAuthorizationToken():
   loginResponse = requests.post(loginUrl, data = loginObject)
-  return 'Bearerd ' + loginResponse.json()['access_token']
+  return 'Bearer ' + loginResponse.json()['access_token']
 
 def getApplicationId():
   getApplicationsResposne = requests.get(applicationUrl, headers = headers)
@@ -44,7 +44,7 @@ if applicationId == None:
    validateResponseCode(response, 202)
 else:
   
-   response = requests.patch(applicationUrl + "/" + str(applicationId),
+   response = requests.patch(applicationUrl + "/ds" + str(applicationId),
       files=files, headers=headers)
    
    validateResponseCode(response, 200)
