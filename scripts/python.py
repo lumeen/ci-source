@@ -2,6 +2,12 @@ import requests
 import os
 import json
 
+
+
+def getAuthorizationToken():
+  loginResponse = requests.post(loginUrl, data = loginObject)
+  return 'Bearer ' + loginResponse.json()['access_token']
+
 loginUrl = 'https://anypoint.mulesoft.com/accounts/login'
 applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1//applications'
 loginObject = {'username': os.environ['muleUsername'], 'password':os.environ['mulePassword']}
@@ -34,7 +40,3 @@ else:
    if response.status_code != 200:
       raise Exception('Error during deploment: ' + response.reason)
 
-
-def getAuthorizationToken():
-  loginResponse = requests.post(loginUrl, data = loginObject)
-  return 'Bearer ' + loginResponse.json()['access_token']
