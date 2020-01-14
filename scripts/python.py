@@ -27,11 +27,11 @@ if applicationId == None:
    'artifactName' :'aaaaaaa'},   
       files=files, headers=headers)
  
-   responseStatus = response.json()['message']
+   responseStatus = response.json()['content']
 else:
    print("wchodze3")
    response = requests.patch(applicationUrl + "/" + str(applicationId),
       files=files, headers=headers)
  
-   responseStatus = response.json()['message']
+   responseStatus = response.json()['content']
    print(responseStatus)
