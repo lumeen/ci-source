@@ -34,5 +34,5 @@ if applicationId == None:
    response = requests.post(applicationUrl, data={'targetId' :targetId,'artifactName' :appName},   files=applicationJar, headers=headers)
    validateResponseCode(response, 202)
 else:
-   response = requests.patch(applicationUrl + "/ds" + str(applicationId), files=applicationJar, headers=headers)
+   response = requests.patch(applicationUrl + "/" + str(applicationId), files=applicationJar, headers=headers)
    validateResponseCode(response, 200)
