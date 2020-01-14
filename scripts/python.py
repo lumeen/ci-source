@@ -27,11 +27,12 @@ if applicationId == None:
    'artifactName' :'aaaaaaa'},   
       files=files, headers=headers)
  
-   responseStatus = response.json()['content']
+   if response.status_code != 202:
+      raise Exception('Error during deploment: ' + response.reason)
 else:
    print("wchodze3")
    response = requests.patch(applicationUrl + "/" + str(applicationId),
       files=files, headers=headers)
  
-   responseStatus = response.json()['content']
-   print(responseStatus)
+   if response.status_code != 202:
+      raise Exception('Error during deploment: ' + response.reason)
