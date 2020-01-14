@@ -26,7 +26,7 @@ headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, '
 files = {'file': open('maven-output/' + appName +'-1.0.0-SNAPSHOT-mule-application.jar','rb')}
 
 applicationId = getApplicationId
-
+print(applicationId)
 
 if applicationId == None: 
    response = requests.post(applicationUrl, data={
