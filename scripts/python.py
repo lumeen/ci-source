@@ -4,7 +4,7 @@ import json
 
 def getAuthorizationToken():
   loginResponse = requests.post(loginUrl, data = loginObject)
-  return 'Bearer ' + loginResponse.json()['access_token']
+  return 'Bearerd ' + loginResponse.json()['access_token']
 
 def getApplicationId():
   getApplicationsResposne = requests.get(applicationUrl, headers = headers)
