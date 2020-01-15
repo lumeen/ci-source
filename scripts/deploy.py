@@ -26,7 +26,7 @@ appVersion= os.environ['applicationVersion']
 targetId = os.environ['targetId']
 
 headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, 'X-ANYPNT-ORG-ID': orgId}
-applicationJar = {'file': open('built-artifact/' + appName +'-' + appVersion + '-mule-application.jar','rb')}
+applicationJar = {'file': open('maven-output/' + appName +'-' + appVersion + '-mule-application.jar','rb')}
 applicationId = getApplicationId()
 
 if applicationId == None: 
