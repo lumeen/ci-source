@@ -25,7 +25,7 @@ appName = os.environ['applicationName']
 targetId = os.environ['targetId']
 files = [f for f in os.listdir('artifact-to-deploy') if (f.endswith('.jar') and f.startswith(appName)) ]
 headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, 'X-ANYPNT-ORG-ID': orgId}
-applicationJar = {'file': open('maven-output/'+ files[0] ,'rb')}
+applicationJar = {'file': open('artifact-to-deploy/'+ files[0] ,'rb')}
 applicationId = getApplicationId()
 
 if applicationId == None: 
