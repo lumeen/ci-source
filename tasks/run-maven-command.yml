@@ -15,4 +15,4 @@ run:
   args:
   - ci-source/scripts/maven-package.sh
 outputs:
-- name: maven-output
+- name: built-artifact
