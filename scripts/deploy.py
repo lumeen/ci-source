@@ -24,10 +24,9 @@ orgId = os.environ['orgId']
 appName = os.environ['applicationName']
 appVersion= os.environ['applicationVersion']
 targetId = os.environ['targetId']
-text_files = [f for f in os.listdir('maven-output') if (f.endswith('.jar') and f.startswith(appName)) ]
-print(text_files)
+files = [f for f in os.listdir('maven-output') if (f.endswith('.jar') and f.startswith(appName)) ]
 headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, 'X-ANYPNT-ORG-ID': orgId}
-applicationJar = {'file': open('maven-output/' + appName +'-' + appVersion + '-mule-application.jar','rb')}
+applicationJar = {'file': open('maven-output/'+ files[0] ,'rb')}
 applicationId = getApplicationId()
 
 if applicationId == None: 
