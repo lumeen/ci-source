@@ -28,6 +28,7 @@ loginUrl = 'https://anypoint.mulesoft.com/accounts/login'
 applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1/applications'
 
 envId = os.environ['envId']
+appDeploymentTimeout = os.environ['appDeploymntTimeout']
 orgId = os.environ['orgId']
 appName = os.environ['applicationName']
 targetId = os.environ['targetId']
@@ -44,15 +45,18 @@ else:
    validateResponseCode(response, 200)
 
 timeout = True
-for i in range(0,10,1):
-  if validateApplicationStatus() != "STARTED":
-    time.sleep(1)  
+for i in range(0,appDeploymentTimeout,1):
+  appStatus = validateApplicationStatus()
+  if appStatus == "DEPLOYMENT_FAILED":
+    raise Exception('Error during deployment. Application status: DEPLOYMENT_FAILED')
+  elif appStatus == "STARTING":
+    time.sleep(1)
   else:
     timeout = False
     break
 
 if timeout == True:
-  raise Exception('Error during deployment: application did not start correctly'	)
+  raise Exception('Error during deployment: application nas not sterdet before the timeout')
 
 
 
