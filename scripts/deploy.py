@@ -23,8 +23,6 @@ def getApplicationProperty(applicationName, propertyName, targetId):
   applicationProperties = next((x for x in applications if x['name'] == applicationName), None) 
   return applicationProperties[propertyName] if applicationProperties != None else None
 
-def getApplicationStatus(applicationName, propertyName, targetId):
-  return getApplicationProperty(applicationName, propertyName, targetId)
 
 loginUrl = 'https://anypoint.mulesoft.com/accounts/login'
 applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1/applications'
