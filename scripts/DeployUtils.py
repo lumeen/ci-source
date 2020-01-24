@@ -29,6 +29,13 @@ def getApplicationProperty(applicationName, propertyName, targetId, headers):
   applicationProperties = next((x for x in applications if x['name'] == applicationName), None) 
   return applicationProperties[propertyName] if applicationProperties != None else None  
 
+def deployApplication(applicationId, targetId, appName, headers, applicationJar):
+  if applicationId == None: 
+   response = requests.post(applicationUrl, data={'targetId' :targetId,'artifactName' :appName},   files=applicationJar, headers=headers)
+   validateResponseCode(response, 202)
+  else:
+   response = requests.patch(applicationUrl + "/" + str(applicationId), files=applicationJar, headers=headers)
+   validateResponseCode(response, 200)
 
 def validateDeployment(appDeploymentTimeout, appName, targetId, headers):
   print("waliduje")
