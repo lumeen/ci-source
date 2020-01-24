@@ -14,7 +14,7 @@ def validateResponseCode(apiResponse, responseCode):
   if apiResponse.status_code != responseCode:
    raise Exception('Error during deploment: ' + apiResponse.json()['message']	)
 
-def getApplicationProperty(applicationName, propertyName, targetId)
+def getApplicationProperty(applicationName, propertyName, targetId):
   getApplicationsResposne = requests.get(applicationUrl + "?targetId=" + targetId, headers = headers)
   applications = getApplicationsResposne.json()['data']
   applicationProperties = next((x for x in applications if x[applicationName] == appName), None) 
