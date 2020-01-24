@@ -7,8 +7,11 @@ def getAuthorizationToken():
   loginResponse = requests.post(loginUrl, data = {'username': os.environ['muleUsername'], 'password':os.environ['mulePassword']})
   return 'Bearer ' + loginResponse.json()['access_token']
 
-def getApplicationId(applicationName, propertyName, targetId):
-  return getApplicationProperty(applicationName, propertyName, targetId)
+def getApplicationId(applicationName, targetId):
+  return getApplicationProperty(applicationName, 'id', targetId)
+
+def getApplicationStatus(applicationName, targetId):
+  return getApplicationProperty(applicationName, 'lastReportedStatus', targetId)  
 
 def validateResponseCode(apiResponse, responseCode):   
   if apiResponse.status_code != responseCode:
@@ -34,7 +37,7 @@ targetId = os.environ['targetId']
 files = [f for f in os.listdir('artifact-to-deploy') if (f.endswith('.jar') and f.startswith(appName)) ]
 headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, 'X-ANYPNT-ORG-ID': orgId}
 applicationJar = {'file': open('artifact-to-deploy/'+ files[0] ,'rb')}
-applicationId = getApplicationId(appName, 'id', targetId)
+applicationId = getApplicationId(appName, targetId)
 
 if applicationId == None: 
    response = requests.post(applicationUrl, data={'targetId' :targetId,'artifactName' :appName},   files=applicationJar, headers=headers)
@@ -45,7 +48,7 @@ else:
 
 timeout = True
 for i in range(0,int(appDeploymentTimeout),1):
-  appStatus = getApplicationStatus(appName, 'lastReportedStatus', targetId)
+  appStatus = getApplicationStatus(appName, targetId)
   if appStatus == "DEPLOYMENT_FAILED":
     raise Exception('Error during deployment. Application status: DEPLOYMENT_FAILED')
   elif appStatus == "STARTING":
