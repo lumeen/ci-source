@@ -2,10 +2,7 @@ import requests
 import os
 import json
 import time
-
-def getAuthorizationToken():
-  loginResponse = requests.post(loginUrl, data = {'username': os.environ['muleUsername'], 'password':os.environ['mulePassword']})
-  return 'Bearer ' + loginResponse.json()['access_token']
+from DeployUtils import getAuthorizationToken
 
 def getApplicationId(applicationName, targetId):
   return getApplicationProperty(applicationName, 'id', targetId)
@@ -24,7 +21,7 @@ def getApplicationProperty(applicationName, propertyName, targetId):
   return applicationProperties[propertyName] if applicationProperties != None else None
 
 def validateDeployment():
-  print("waliduje")
+  println ("waliduje")
   timeout = True
   for i in range(0,int(appDeploymentTimeout),1):
     appStatus = getApplicationStatus(appName, targetId)
@@ -40,16 +37,18 @@ def validateDeployment():
   if timeout == True:
     raise Exception('Error during deployment: application nas not sterdet before the timeout')  
 
-loginUrl = 'https://anypoint.mulesoft.com/accounts/login'
 applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1/applications'
 
 envId = os.environ['envId']
+
+muleusername = os.environ['muleUsername']
+mulepassword = os.environ['mulepassword']
 appDeploymentTimeout = os.environ['appDeploymentTimeout']
 orgId = os.environ['orgId']
 appName = os.environ['applicationName']
 targetId = os.environ['targetId']
 files = [f for f in os.listdir('artifact-to-deploy') if (f.endswith('.jar') and f.startswith(appName)) ]
-headers = {'Authorization': getAuthorizationToken(), 'X-ANYPNT-ENV-ID': envId, 'X-ANYPNT-ORG-ID': orgId}
+headers = {'Authorization': getAuthorizationToken(muleusername, mulepassword), 'X-ANYPNT-ENV-ID': envId, 'X-ANYPNT-ORG-ID': orgId}
 applicationJar = {'file': open('artifact-to-deploy/'+ files[0] ,'rb')}
 applicationId = getApplicationId(appName, targetId)
 
