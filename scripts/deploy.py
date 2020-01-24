@@ -1,13 +1,14 @@
 import requests
 import os
 import json
+import time
 
 def getAuthorizationToken():
   loginResponse = requests.post(loginUrl, data = {'username': os.environ['muleUsername'], 'password':os.environ['mulePassword']})
   return 'Bearer ' + loginResponse.json()['access_token']
 
 def getApplicationId():
-  getApplicationsResposne = requests.get(applicationUrl, headers = headers)
+  getApplicationsResposne = requests.get(applicationUrl + "?targetId=" + targetId, headers = headers)
   applications = getApplicationsResposne.json()['data']
   applicationProperties = next((x for x in applications if x['name'] == appName), None)
   return applicationProperties['id'] if applicationProperties != None else None
@@ -15,6 +16,13 @@ def getApplicationId():
 def validateResponseCode(apiResponse, responseCode):   
   if apiResponse.status_code != responseCode:
    raise Exception('Error during deploment: ' + apiResponse.json()['message']	)
+
+def validateApplicationStatus():
+  print("waliduję")
+  getApplicationsResposne = requests.get(applicationUrl + "?targetId=" + targetId, headers = headers)
+  applications = getApplicationsResposne.json()['data']
+  applicationProperties = next((x for x in applications if x['name'] == appName), None)
+  return applicationProperties['lastReportedStatus'] if applicationProperties != None else None
 
 loginUrl = 'https://anypoint.mulesoft.com/accounts/login'
 applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1/applications'
@@ -34,3 +42,11 @@ if applicationId == None:
 else:
    response = requests.patch(applicationUrl + "/" + str(applicationId), files=applicationJar, headers=headers)
    validateResponseCode(response, 200)
+
+for i in range(0,10,1):
+  if validateApplicationStatus() != "STARTED"
+    time.sleep(60)
+  else:
+    break  
+
+
