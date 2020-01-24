@@ -21,7 +21,7 @@ applicationJar = {'file': open('artifact-to-deploy/'+ files[0] ,'rb')}
 
 applicationId = getApplicationId(appName, targetId, headers)
 
-deployApplication(applicationId, targetId, appName, headers)
+deployApplication(applicationId, targetId, appName, headers, applicationJar)
 
-validateDeployment(appDeploymentTimeout, appName, targetId, headers, applicationJar)
+validateDeployment(appDeploymentTimeout, appName, targetId, headers)
 
