@@ -16,7 +16,7 @@ def getApplicationId(applicationName, targetId, headers):
   return getApplicationProperty(applicationName, 'id', targetId, headers)
 
 def getApplicationStatus(applicationName, targetId, headers):
-  return getApplicationProperty(applicationName, 'lastReportedStatus', targetId)  
+  return getApplicationProperty(applicationName, 'lastReportedStatus', targetId, headers)  
 
 def validateResponseCode(apiResponse, responseCode):   
   if apiResponse.status_code != responseCode:
