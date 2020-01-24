@@ -23,5 +23,5 @@ applicationId = getApplicationId(appName, targetId, headers)
 
 deployApplication(applicationId, targetId, appName, headers)
 
-validateDeployment(appDeploymentTimeout, appName, targetId, headers)
+validateDeployment(appDeploymentTimeout, appName, targetId, headers, applicationJar)
 
