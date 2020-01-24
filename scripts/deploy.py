@@ -45,7 +45,7 @@ else:
 
 timeout = true
 for i in range(0,10,1):
-  if validateApplicationStatus() != "STARTED"
+  if validateApplicationStatus() != "STARTED":
     time.sleep(1)  
   else:
     timeout = false
