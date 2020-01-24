@@ -20,7 +20,7 @@ def validateResponseCode(apiResponse, responseCode):
 def getApplicationProperty(applicationName, propertyName, targetId):
   getApplicationsResposne = requests.get(applicationUrl + "?targetId=" + targetId, headers = headers)
   applications = getApplicationsResposne.json()['data']
-  applicationProperties = next((x for x in applications if x[applicationName] == appName), None) 
+  applicationProperties = next((x for x in applications if x['name'] == applicationName), None) 
   return applicationProperties[propertyName] if applicationProperties != None else None
 
 def getApplicationStatus(applicationName, propertyName, targetId):
