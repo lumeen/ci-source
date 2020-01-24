@@ -43,15 +43,15 @@ else:
    response = requests.patch(applicationUrl + "/" + str(applicationId), files=applicationJar, headers=headers)
    validateResponseCode(response, 200)
 
-timeout = true
+timeout = True
 for i in range(0,10,1):
-  if validateApplicationStatus() != "STARTED":
+  if validateApplicationStatus() != "STARTED"
     time.sleep(1)  
   else:
-    timeout = false
+    timeout = False
     break
 
-if timeout == true
+if timeout == True:
   raise Exception('Error during deployment: application did not start correctly'	)
 
 
