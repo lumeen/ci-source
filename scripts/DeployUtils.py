@@ -30,7 +30,9 @@ def getApplicationProperty(applicationName, propertyName, targetId, headers):
   return applicationProperties[propertyName] if applicationProperties != None else None  
 
 
- def validateDeployment(appDeploymentTimeout, appName, targetId):
+def validateDeployment():
+  println ("waliduje")
+  print("waliduje")
   timeout = True
   for i in range(0,int(appDeploymentTimeout),1):
     appStatus = getApplicationStatus(appName, targetId)
@@ -44,4 +46,5 @@ def getApplicationProperty(applicationName, propertyName, targetId, headers):
       break
     
   if timeout == True:
-    raise Exception('Error during deployment: application nas not sterdet before the timeout')   
+    raise Exception('Error during deployment: application nas not sterdet before the timeout')  
+ 
