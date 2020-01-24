@@ -45,7 +45,7 @@ else:
    validateResponseCode(response, 200)
 
 timeout = True
-for i in range(0,appDeploymentTimeout,1):
+for i in range(0,int(appDeploymentTimeout),1):
   appStatus = validateApplicationStatus()
   if appStatus == "DEPLOYMENT_FAILED":
     raise Exception('Error during deployment. Application status: DEPLOYMENT_FAILED')
