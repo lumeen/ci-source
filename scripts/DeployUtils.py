@@ -31,7 +31,6 @@ def getApplicationProperty(applicationName, propertyName, targetId, headers):
 
 
 def validateDeployment(appDeploymentTimeout, appName, targetId):
-  println ("waliduje")
   print("waliduje")
   timeout = True
   for i in range(0,int(appDeploymentTimeout),1):
