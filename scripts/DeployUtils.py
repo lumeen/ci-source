@@ -30,7 +30,7 @@ def getApplicationProperty(applicationName, propertyName, targetId, headers):
   return applicationProperties[propertyName] if applicationProperties != None else None  
 
 
-def validateDeployment():
+def validateDeployment(appDeploymentTimeout, appName, targetId):
   println ("waliduje")
   print("waliduje")
   timeout = True
