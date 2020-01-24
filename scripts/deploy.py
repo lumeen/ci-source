@@ -28,7 +28,7 @@ loginUrl = 'https://anypoint.mulesoft.com/accounts/login'
 applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1/applications'
 
 envId = os.environ['envId']
-appDeploymentTimeout = os.environ['appDeploymntTimeout']
+appDeploymentTimeout = os.environ['appDeploymentTimeout']
 orgId = os.environ['orgId']
 appName = os.environ['applicationName']
 targetId = os.environ['targetId']
