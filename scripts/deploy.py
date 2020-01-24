@@ -24,7 +24,7 @@ def getApplicationProperty(applicationName, propertyName, targetId):
   return applicationProperties[propertyName] if applicationProperties != None else None
 
 def validateDeployment():
-  println ("waliduje")
+  print("waliduje")
   timeout = True
   for i in range(0,int(appDeploymentTimeout),1):
     appStatus = getApplicationStatus(appName, targetId)
