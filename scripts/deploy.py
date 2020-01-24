@@ -42,7 +42,7 @@ applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1/applications'
 envId = os.environ['envId']
 
 muleusername = os.environ['muleUsername']
-mulepassword = os.environ['mulepassword']
+mulepassword = os.environ['mulePassword']
 appDeploymentTimeout = os.environ['appDeploymentTimeout']
 orgId = os.environ['orgId']
 appName = os.environ['applicationName']
