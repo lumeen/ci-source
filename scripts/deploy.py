@@ -2,9 +2,7 @@ import requests
 import os
 import json
 import time
-from DeployUtils import getAuthorizationToken, getApplicationId, getApplicationStatus, validateDeployment, validateResponseCode
-
-applicationUrl = 'https://anypoint.mulesoft.com/hybrid/api/v1/applications'
+from DeployUtils import getAuthorizationToken, getApplicationId, getApplicationStatus, validateDeployment, validateResponseCode, deployApplication
 
 
 envId = os.environ['envId']
@@ -23,12 +21,7 @@ applicationJar = {'file': open('artifact-to-deploy/'+ files[0] ,'rb')}
 
 applicationId = getApplicationId(appName, targetId, headers)
 
-if applicationId == None: 
-   response = requests.post(applicationUrl, data={'targetId' :targetId,'artifactName' :appName},   files=applicationJar, headers=headers)
-   validateResponseCode(response, 202)
-else:
-   response = requests.patch(applicationUrl + "/" + str(applicationId), files=applicationJar, headers=headers)
-   validateResponseCode(response, 200)
+deployApplication(applicationId, targetId, appName, headers)
 
 validateDeployment(appDeploymentTimeout, appName, targetId, headers)
 
