@@ -30,5 +30,5 @@ else:
    response = requests.patch(applicationUrl + "/" + str(applicationId), files=applicationJar, headers=headers)
    validateResponseCode(response, 200)
 
-validateDeployment(appDeploymentTimeout, appName, targetId)
+validateDeployment(appDeploymentTimeout, appName, targetId, headers)
 
