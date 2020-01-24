@@ -30,11 +30,11 @@ def getApplicationProperty(applicationName, propertyName, targetId, headers):
   return applicationProperties[propertyName] if applicationProperties != None else None  
 
 
-def validateDeployment(appDeploymentTimeout, appName, targetId):
+def validateDeployment(appDeploymentTimeout, appName, targetId, headers):
   print("waliduje")
   timeout = True
   for i in range(0,int(appDeploymentTimeout),1):
-    appStatus = getApplicationStatus(appName, targetId)
+    appStatus = getApplicationStatus(appName, targetId, headers)
     if appStatus == "DEPLOYMENT_FAILED":
       raise Exception('Error during deployment. Application status: DEPLOYMENT_FAILED')
     elif appStatus == "STARTING":
