@@ -44,7 +44,7 @@ else:
    validateResponseCode(response, 200)
 
 for i in range(0,10,1):
-  if validateApplicationStatus() != "STARTED":
+  if validateApplicationStatus() != "STARTEDD":
     time.sleep(60)
   else:
     break  
